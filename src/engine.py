@@ -23,11 +23,21 @@ def main():
         ...
     """
     player_names = ["P1", "P2", "P3", "P4"]
-    players = {player: Player(num) for num, player in enumerate(player_names, start=1)}
+    players = {name: Player(num) for num, name in enumerate(player_names, start=1)}
     while MATCH_NUM <= NUM_OF_MATCHES:
-        score, team = play_match()
+        score, team = play_match(MATCH_NUM, players)
         update_scoreboard(score, team)
     return
+
+
+def play_match(MATCH_NUM: int, players: dict) -> tuple(int, int):
+    dealer = "P1"
+    
+    pass
+
+
+def update_scoreboard():
+    pass
 
 
 if __name__ == '__main__':
