@@ -3,6 +3,7 @@
 from players import Player
 
 NUM_OF_MATCHES = 1
+MATCH_NUM = 0
 
 
 def main():
@@ -23,7 +24,9 @@ def main():
     """
     player_names = ["P1", "P2", "P3", "P4"]
     players = {player: Player(num) for num, player in enumerate(player_names, start=1)}
-    
+    while MATCH_NUM <= NUM_OF_MATCHES:
+        score, team = play_match()
+        update_scoreboard(score, team)
     return
 
 
