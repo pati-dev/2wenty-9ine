@@ -6,7 +6,6 @@ authors = ["Ankit Mathur <val.mathur@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-numpy = "^1.21.2"
 tqdm = "^4.62.3"
 
 [tool.poetry.dev-dependencies]
