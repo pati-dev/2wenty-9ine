@@ -21,13 +21,8 @@ def main():
         Identify active player
         ...
     """
-    
-    players = {
-        'P1': Player(1, True),  # TODO: Randomly choose dealer instead of the first player
-        'P2': Player(2),
-        'P3': Player(3),
-        'P4': Player(4)
-    }
+    player_names = ["P1", "P2", "P3", "P4"]
+    players = {player: Player(num) for num, player in enumerate(player_names, start=1)}
     
     return
 
