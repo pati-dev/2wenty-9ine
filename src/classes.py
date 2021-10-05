@@ -1,3 +1,6 @@
+import random
+import constants
+
 class Card:
     """Class for each card in the deck.
     """
@@ -20,8 +23,18 @@ class Card:
 
 
 class Deck:
-    """Class 
+    """Class for the deck of cards.
     """
+
+    def __init__(self) -> None:
+        self.cards = []
+        self.create()
+        
+    def create(self, shuffle: bool = False) -> list:
+        self.cards = list(constants.CARDS)
+        if shuffle:
+            self.cards = random.shuffle(self.cards)
+        return self.cards
 
 class Player():
     """A class to define the behaviour of each of the 4 players playing the game.
