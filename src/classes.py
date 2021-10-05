@@ -47,7 +47,7 @@ class Deck:
 class Player():
     """A class to define the behaviour of each of the 4 players playing the game.
     """
-    def __init__(self, team: int, name: str) -> None:
+    def __init__(self, team: str, name: str) -> None:
         """Constructor to define a player.
 
         Args:
@@ -61,3 +61,13 @@ class Player():
     def draw(self, deck):
         self.hand.extend(deck.deal())
         return self
+    
+    def bid(self, max_bid):
+        points = int(input("Make your bid. Should be greater than {}:".format(max_bid)))
+        return points
+    
+    def play_card(self):
+        for idx, card in enumerate(self.hand):
+            print(idx, ":", constants.CARDS[card]['name'])
+        card_loc = int(input("Choose a card to play:"))
+        self.hand.pop(card_loc)
