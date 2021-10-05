@@ -49,12 +49,12 @@ CARDS = {
     31: {'name': "Ace of Clubs", 'points': 1}
 }
 
-SUITS = {
-    0: 'Hearts',
-    1: 'Spades',
-    2: 'Diamonds',
-    3: 'Clubs'
-}
+SUITS = [
+    'Hearts',
+    'Spades',
+    'Diamonds',
+    'Clubs'
+]
 
 VALUES = {
     0: "7 ",
