@@ -1,0 +1,4 @@
+.vscode/settings.json
+src/__pycache__/classes.cpython-38.pyc
+.gitignore
+src/__pycache__/constants.cpython-38.pyc
