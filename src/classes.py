@@ -62,12 +62,15 @@ class Player():
         self.hand.extend(deck.deal())
         return self
     
+    def show_hand(self):
+        for idx, card in enumerate(self.hand):
+            print(idx, ":", constants.CARDS[card]['name'])
+    
     def bid(self, max_bid):
         points = int(input("Make your bid. Should be greater than {}:".format(max_bid)))
         return points
     
     def play_card(self):
-        for idx, card in enumerate(self.hand):
-            print(idx, ":", constants.CARDS[card]['name'])
+        self.show_hand()
         card_loc = int(input("Choose a card to play:"))
         self.hand.pop(card_loc)
