@@ -1,3 +1,19 @@
+TEAMS = {
+    
+}
+
+PLAYERS = {
+    
+}
+
+SCOREBOARD = {
+    
+}
+
+ACTIONS = {
+    0: {'name': ""}
+}
+
 CARDS = {
     0: {'name': "7 of Hearts", 'points': 0},
     1: {'name': "8 of Hearts", 'points': 0},
@@ -30,22 +46,36 @@ CARDS = {
     28: {'name': "Jack of Clubs", 'points': 3},
     29: {'name': "Queen of Clubs", 'points': 0},
     30: {'name': "King of Clubs", 'points': 0},
-    31: {'name': "Ace of Clubs", 'points': 1},
+    31: {'name': "Ace of Clubs", 'points': 1}
+}
+
+SUITS = {
+    0: 'Hearts',
+    1: 'Spades',
+    2: 'Diamonds',
+    3: 'Clubs'
+}
+
+VALUES = {
+    0: "7 ",
+    1: "8 ",
+    2: "9 ",
+    3: "10 ",
+    4: "jack",
+    5: "queen",
+    6: "king",
+    7: "ace"
 }
 
 TRUMPS = {
-    0: "Hearts",
-    1: "Spades",
-    2: "Diamonds",
-    3: "Clubs",
-    4: "Reverse Hearts",
-    5: "Reverse Spades",
-    6: "Reverse Diamonds",
-    7: "Reverse Clubs",
-    8: "Reverse No Trump",
-    9: "Reverse"
-}
-
-POINTS = {
-    0: 
+    0: "hearts",
+    1: "spades",
+    2: "diamonds",
+    3: "clubs",
+    4: "reverse hearts",
+    5: "reverse spades",
+    6: "reverse diamonds",
+    7: "reverse clubs",
+    8: "reverse no trump",
+    9: "reverse"
 }
