@@ -24,10 +24,11 @@ def main():
         ...
     """
     players = instantiate_players()
-    deck = Deck()
+    deck = Deck(shuffle=True)
     deal_cards(deck, players)
     kholu, goal = bid(players)
-    
+    deal_cards(deck, players)
+    players[0].play_card()
     return
 
 
@@ -48,7 +49,7 @@ def deal_cards(deck, players) -> None:
 
 def bid(players):
     P1, P2, P3, P4 = players
-    
+    return P2, 20
 
 
 if __name__ == '__main__':
