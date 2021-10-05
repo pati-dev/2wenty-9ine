@@ -25,20 +25,32 @@ class Card:
 class Deck:
     """Class for the deck of cards.
     """
+    def __init__(self, shuffle: bool = False) -> list:
+        """Constructor method for building a deck of cards.
 
-    def __init__(self) -> None:
-        self.cards = []
-        self.create()
-        
-    def create(self, shuffle: bool = False) -> list:
+        Args:
+            shuffle (bool, optional): Whether to shuffle the cards or not. Defaults to False.
+
+        Returns:
+            list: Ordered deck of cards.
+        """
         self.cards = list(constants.CARDS)
         if shuffle:
-            self.cards = random.shuffle(self.cards)
-        return self.cards
+            random.shuffle(self.cards)
+    
+    def deal(self):
+        
+        
 
 class Player():
     """A class to define the behaviour of each of the 4 players playing the game.
     """
-    def __init__(self, uid: int, dealer: bool = False) -> None:
-        uid = uid
-        dealer = dealer
+    def __init__(self, team: int, name: str) -> None:
+        """Constructor to define a player.
+
+        Args:
+            team (int): Unique key for player's team.
+            name (str): Name of the player.
+        """
+        self.team = team
+        self.name = name
