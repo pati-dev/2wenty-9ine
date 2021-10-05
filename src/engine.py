@@ -1,5 +1,6 @@
 """Main file to test run the game.
 """
+from os import name
 from classes import Card, Deck, Player
 
 NUM_OF_MATCHES = 1
@@ -42,6 +43,5 @@ MATCH_NUM = 0
 
 if __name__ == '__main__':
     deck = Deck(True)
-    print(deck.cards)
-    deck = Deck()
-    print(deck.cards)
+    P1 = Player(team=420, name="Khiladi")
+    print()

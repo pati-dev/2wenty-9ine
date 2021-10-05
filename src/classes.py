@@ -39,8 +39,10 @@ class Deck:
             random.shuffle(self.cards)
     
     def deal(self):
-        
-        
+        dealt = self.cards[:4]
+        self.cards = self.cards[4:]
+        return dealt
+
 
 class Player():
     """A class to define the behaviour of each of the 4 players playing the game.
@@ -54,3 +56,8 @@ class Player():
         """
         self.team = team
         self.name = name
+        self.hand = []
+
+    def draw(self, deck):
+        self.hand.extend(deck.deal())
+        return self
