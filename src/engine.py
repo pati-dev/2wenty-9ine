@@ -1,7 +1,7 @@
 """Main file to test run the game.
 """
 from os import name
-from classes import Card, Deck, Player
+from classes import Card, Deck, Player, Game
 
 NUM_OF_MATCHES = 1
 MATCH_NUM = 0
@@ -23,12 +23,14 @@ def main():
         Identify active player
         ...
     """
-    players = instantiate_players()
-    deck = Deck(shuffle=True)
-    deal_cards(deck, players)
-    kholu, goal = bid(players)
-    deal_cards(deck, players)
-    players[0].play_card()
+    game = Game(1)
+    game.start_game()
+    # players = instantiate_players()
+    # deck = Deck(shuffle=True)
+    # deal_cards(deck, players)
+    # kholu, goal = bid(players)
+    # deal_cards(deck, players)
+    # players[0].play_card()
     return
 
 
