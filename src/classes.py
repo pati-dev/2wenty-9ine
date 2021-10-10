@@ -37,11 +37,15 @@ class Deck:
         self.cards = list(constants.CARDS)
         if shuffle:
             random.shuffle(self.cards)
+        self.trump = None
     
     def deal(self):
         dealt = self.cards[:4]
         self.cards = self.cards[4:]
         return dealt
+
+    def set_trump(self, trump):
+        self.trump = constants.TRUMPS[trump]
 
 
 class Player():
