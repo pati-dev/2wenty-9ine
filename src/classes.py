@@ -65,7 +65,6 @@ class Player():
     def draw(self, deck):
         self.hand.extend(deck.deal())
         self.show_hand()
-        return self
     
     def show_hand(self):
         for idx, card in enumerate(self.hand):
@@ -79,3 +78,7 @@ class Player():
         self.show_hand()
         card_loc = int(input("Choose a card to play:"))
         self.hand.pop(card_loc)
+
+    def set_trump(self, deck):
+        trump = int(input("Choose the trump for this game:\n{}\n".format(constants.TRUMPS)))
+        deck.set_trump(trump)
