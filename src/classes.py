@@ -60,6 +60,7 @@ class Player():
 
     def draw(self, deck):
         self.hand.extend(deck.deal())
+        self.show_hand()
         return self
     
     def show_hand(self):
