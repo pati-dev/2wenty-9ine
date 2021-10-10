@@ -1,5 +1,6 @@
 import random
 import constants
+from abc import ABC
 
 class Card:
     """Class for each card in the deck.
@@ -86,14 +87,41 @@ class Player():
 class Game:
     """Core class for the game engine.
     """
-    def __init__(self):
+    def __init__(self, n):
+        self.games = n
+        self.current_game = 0
+        self.playing = False
         self.state = None
+        self.teams = {1: 'Team 1', 2: 'Team 2'}
         self.players = {}
-        self.teams = {0: 'Team 1', 1: 'Team 2'}
+        self.dealer = None
 
     def create_teams(self):
-        self.teams[0] = str(input("Name for team 1:"))
-        self.teams[1] = str(input("Name for team 2:"))
+        self.teams[1] = str(input("Name for team 1:"))
+        self.teams[2] = str(input("Name for team 2:"))
+        self.assign_players()
 
     def assign_players(self):
-       self.players = {team: input("Player {} for team {}:".format(idx, team)) for idx, team in self.teams.keys()}
+       self.players = {team: input("Player {} for team {}:".format(idx, team)) for idx, team in self.teams.items()}
+
+    def start_game(self):
+        self.current_game += 1
+        assert (self.playing == False) & (self.validate_kickoff())
+        self.playing = True
+        self.state = DealCards(self)
+
+    def validate_kickoff(self):
+        return self.current_game <= self.games
+
+
+class States(ABC):
+    """Superclass for states of the game 29.
+    """
+    def __init__(self, game):
+        raise NotImplementedError
+
+
+class DealCards(States):
+    def __init__(self, game):
+        if not(game.dealer):
+            game.
