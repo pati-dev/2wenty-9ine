@@ -88,5 +88,12 @@ class Game:
     """
     def __init__(self):
         self.state = None
-        self.players = []
-        self.teams = {}
+        self.players = {}
+        self.teams = {0: 'Team 1', 1: 'Team 2'}
+
+    def create_teams(self):
+        self.teams[0] = str(input("Name for team 1:"))
+        self.teams[1] = str(input("Name for team 2:"))
+
+    def assign_players(self):
+       self.players = {team: input("Player {} for team {}:".format(idx, team)) for idx, team in self.teams.keys()}
