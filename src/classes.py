@@ -25,7 +25,7 @@ class Card:
 class Deck:
     """Class for the deck of cards.
     """
-    def __init__(self, shuffle: bool = False) -> list:
+    def __init__(self, shuffle: bool = False):
         """Constructor method for building a deck of cards.
 
         Args:
@@ -70,8 +70,7 @@ class Player():
         for idx, card in enumerate(self.hand):
             print(idx, ":", constants.CARDS[card]['name'])
     
-    def bid(self, max_bid):
-        points = int(input("Make your bid. Should be greater than {}:".format(max_bid)))
+    def bid(self, points):
         return points
     
     def play_card(self):
@@ -82,3 +81,12 @@ class Player():
     def set_trump(self, deck):
         trump = int(input("Choose the trump for this game:\n{}\n".format(constants.TRUMPS)))
         deck.set_trump(trump)
+
+
+class Game:
+    """Core class for the game engine.
+    """
+    def __init__(self):
+        self.state = None
+        self.players = []
+        self.teams = {}
