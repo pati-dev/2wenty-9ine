@@ -65,7 +65,6 @@ class Player():
 
     def draw(self, deck: Deck):
         self.hand.extend(deck.deal())
-        self.show_hand()
     
     def show_hand(self):
         for idx, card in enumerate(self.hand):
@@ -92,6 +91,7 @@ class Game:
         self.playing = False
         self.state = None
         self.players = None
+        self.active_player = None
 
     def create_players(self):
         team1 = str(input("Name for team 1:"))
@@ -103,16 +103,21 @@ class Game:
 
         P1 = Player(team1, t1p1)
         P2 = Player(team1, t1p2)
-        P3 = Player(team1, t2p1)
-        P4 = Player(team1, t2p2)
+        P3 = Player(team2, t2p1)
+        P4 = Player(team2, t2p2)
         return [P1, P2, P3, P4]
 
     def start_game(self):
         self.playing = True
         self.players = self.create_players()
+        self.activate_player(self.players[0])
+        DealCards(self, self.players).action()
 
     def validate_kickoff(self):
         return True
+
+    def activate_player(self, player: Player):
+        self.active_player = player
 
 
 class States(ABC):
@@ -122,7 +127,11 @@ class States(ABC):
         raise NotImplementedError
 
 
-class StartState(States):
-    def __init__(self, game: Game, player: Player):
+class DealCards(States):
+    def __init__(self, game: Game, players: list):
         self.game = game
-        self.player = player
+        self.players = players
+
+    def action(self):
+        for player in self.players:
+            player.draw(self.game.deck)
