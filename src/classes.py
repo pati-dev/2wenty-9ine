@@ -52,18 +52,18 @@ class Deck:
 class Player():
     """A class to define the behaviour of each of the 4 players playing the game.
     """
-    def __init__(self, team: str, name: str) -> None:
+    def __init__(self, team: str, name: str):
         """Constructor to define a player.
 
         Args:
-            team (int): Unique key for player's team.
+            team (str): Unique name for player's team.
             name (str): Name of the player.
         """
         self.team = team
         self.name = name
         self.hand = []
 
-    def draw(self, deck):
+    def draw(self, deck: Deck):
         self.hand.extend(deck.deal())
         self.show_hand()
     
@@ -71,7 +71,7 @@ class Player():
         for idx, card in enumerate(self.hand):
             print(idx, ":", constants.CARDS[card]['name'])
     
-    def bid(self, points):
+    def bid(self, points: int):
         return points
     
     def play_card(self):
@@ -79,7 +79,7 @@ class Player():
         card_loc = int(input("Choose a card to play:"))
         self.hand.pop(card_loc)
 
-    def set_trump(self, deck):
+    def set_trump(self, deck: Deck):
         trump = int(input("Choose the trump for this game:\n{}\n".format(constants.TRUMPS)))
         deck.set_trump(trump)
 
@@ -87,41 +87,42 @@ class Player():
 class Game:
     """Core class for the game engine.
     """
-    def __init__(self, n):
-        self.games = n
-        self.current_game = 0
+    def __init__(self):
+        self.deck = Deck(shuffle=True)
         self.playing = False
         self.state = None
-        self.teams = {1: 'Team 1', 2: 'Team 2'}
-        self.players = {}
-        self.dealer = None
+        self.players = None
 
-    def create_teams(self):
-        self.teams[1] = str(input("Name for team 1:"))
-        self.teams[2] = str(input("Name for team 2:"))
-        self.assign_players()
+    def create_players(self):
+        team1 = str(input("Name for team 1:"))
+        team2 = str(input("Name for team 2:"))
+        t1p1 = input("Player {} for team {}:".format(1, team1))
+        t1p2 = input("Player {} for team {}:".format(2, team1))
+        t2p1 = input("Player {} for team {}:".format(1, team2))
+        t2p2 = input("Player {} for team {}:".format(2, team2))
 
-    def assign_players(self):
-       self.players = {team: input("Player {} for team {}:".format(idx, team)) for idx, team in self.teams.items()}
+        P1 = Player(team1, t1p1)
+        P2 = Player(team1, t1p2)
+        P3 = Player(team1, t2p1)
+        P4 = Player(team1, t2p2)
+        return [P1, P2, P3, P4]
 
     def start_game(self):
-        self.current_game += 1
-        assert (self.playing == False) & (self.validate_kickoff())
         self.playing = True
-        self.state = DealCards(self)
+        self.players = self.create_players()
 
     def validate_kickoff(self):
-        return self.current_game <= self.games
+        return True
 
 
 class States(ABC):
     """Superclass for states of the game 29.
     """
-    def __init__(self, game):
+    def __init__(self, game: Game, player: Player):
         raise NotImplementedError
 
 
-class DealCards(States):
-    def __init__(self, game):
-        if not(game.dealer):
-            game.
+class StartState(States):
+    def __init__(self, game: Game, player: Player):
+        self.game = game
+        self.player = player
