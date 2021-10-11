@@ -23,7 +23,7 @@ def main():
         Identify active player
         ...
     """
-    game = Game(1)
+    game = Game()
     game.start_game()
     # players = instantiate_players()
     # deck = Deck(shuffle=True)
